@@ -1,5 +1,5 @@
 import { $ } from "@dekproject/scope";
-import Influx from 'influxdb-nodejs';
+import { InfluxDB } from 'influx';
 
 export default () => {
     try{
@@ -7,7 +7,7 @@ export default () => {
             console.log('[ InfluxDB ] - There is no INFLUXDB_URI variable in the .env file.');
         }
         else{
-            $.set("influxdb", new Influx(process.env['INFLUXDB_URI']));
+            $.set("influxdb", new InfluxDB(process.env.INFLUXDB_URI));
         }
     }
     catch (e) {

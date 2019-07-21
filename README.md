@@ -25,11 +25,6 @@ INFLUXDB_URI=http://127.0.0.1:8086/mydb
 import { $, influxdb } from "@dekproject/scope";
 
 $.wait("influxdb").then(() => {
-    influxdb.query('http')
-            .where('spdy', '1')
-            .where('method', ['GET', 'POST'])
-            .where('use', 300, '>=')
-            .then(console.info)
-            .catch(console.error);
+    influxdb.query(`SHOW DATABASES`).then(console.info).catch(console.error);
 });
 ```
